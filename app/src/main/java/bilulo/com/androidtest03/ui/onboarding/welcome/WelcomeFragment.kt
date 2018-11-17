@@ -19,7 +19,12 @@ class WelcomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        hideActionBar()
         initListeners()
+    }
+
+    private fun hideActionBar() {
+        (activity as OnboardingActivity).supportActionBar?.hide()
     }
 
     private fun initListeners() {

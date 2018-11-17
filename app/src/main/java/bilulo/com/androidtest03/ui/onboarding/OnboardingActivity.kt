@@ -45,11 +45,6 @@ class OnboardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
-        hideActionBar()
         initFragment(this, FragmentType.FRAGMENT_WELCOME)
-    }
-
-    private fun hideActionBar() {
-        supportActionBar?.hide()
     }
 }
