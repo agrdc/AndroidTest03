@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidTest03</string>
+    <string name="tv_welcome">Bem Vindo</string>
+    <string name="btn_begin_register">Iniciar Cadastro</string>
 </resources>
