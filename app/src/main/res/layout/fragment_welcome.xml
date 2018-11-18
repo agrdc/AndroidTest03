@@ -26,7 +26,7 @@
             android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="@+id/guideline_0.20"/>
 
     <Button
@@ -37,7 +37,7 @@
             android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/extra_large_margin"
             app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

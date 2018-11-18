@@ -11,9 +11,9 @@
             android:id="@+id/nameInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -23,16 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="Name"/>
+                android:hint="@string/hint_name"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/cpfInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
@@ -42,34 +42,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number|text"
-                android:hint="CPF"/>
+                android:hint="@string/hint_cpf"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/cepInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/stateInputLayout"
-            app:layout_constraintTop_toBottomOf="@id/cpfInputLayout" android:layout_marginStart="8dp">
+            app:layout_constraintTop_toBottomOf="@id/cpfInputLayout" android:layout_marginStart="@dimen/default_margin">
 
         <EditText
                 android:id="@+id/cepEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="CEP (apenas números)"/>
+                android:inputType="number|text"
+                android:hint="@string/hint_cep"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/stateInputLayout"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toEndOf="@id/cepInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cpfInputLayout">
@@ -79,16 +79,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Estado"/>
+                android:hint="@string/hint_state"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/addressInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cepInputLayout" >
@@ -97,35 +97,35 @@
                 android:id="@+id/addressEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="Endereço"/>
+                android:inputType="text"
+                android:hint="@string/hint_address"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/complementInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numberInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/addressInputLayout" android:layout_marginStart="8dp">
+        app:layout_constraintTop_toBottomOf="@id/addressInputLayout" android:layout_marginStart="@dimen/default_margin">
 
     <EditText
             android:id="@+id/complementEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Complemento"/>
+            android:inputType="text"
+            android:hint="@string/hint_complement"/>
 </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/numberInputLayout"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toEndOf="@id/complementInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addressInputLayout">
@@ -134,35 +134,35 @@
                 android:id="@+id/numberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Número"/>
+                android:inputType="number"
+                android:hint="@string/hint_number"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/neighborhoodInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/complementInputLayout" android:layout_marginStart="8dp">
+            app:layout_constraintTop_toBottomOf="@id/complementInputLayout" android:layout_marginStart="@dimen/default_margin">
 
         <EditText
                 android:id="@+id/neighborhoodEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Bairro"/>
+                android:hint="@string/hint_neighborhood"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
             android:id="@+id/birthDateInputLayout"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/neighborhoodInputLayout">
 
@@ -170,8 +170,8 @@
                 android:id="@+id/birthDateEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Data de nascimento"/>
+                android:inputType="date"
+                android:hint="@string/hint_birth_date"/>
     </android.support.design.widget.TextInputLayout>
 
 

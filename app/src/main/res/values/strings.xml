@@ -3,4 +3,20 @@
     <string name="title_register">Registrar</string>
     <string name="tv_welcome">Bem Vindo</string>
     <string name="btn_begin_register">Iniciar Cadastro</string>
+
+    <string name="hint_name">Nome</string>
+    <string name="hint_cpf">CPF</string>
+    <string name="hint_cep">CEP</string>
+    <string name="hint_state">Estado</string>
+    <string name="hint_address">Endereço</string>
+    <string name="hint_complement">Complemento</string>
+    <string name="hint_number">Número</string>
+    <string name="hint_neighborhood">Bairro</string>
+    <string name="hint_birth_date">Data de nascimento</string>
+
+    <string name="et_generic_empty_error">Por favor preencha este campo.</string>
+    <string name="et_cpf_error">CPF fora do padrão (xxx.xxx.xxx-xx).</string>
+    <string name="et_cep_error">CEP fora do padrão (xxxxx-xxx).</string>
+
+
 </resources>
