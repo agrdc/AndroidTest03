@@ -2,8 +2,8 @@ package bilulo.com.androidtest03.ui.onboarding
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.ui.onboarding.register.RegisterFragment
 import bilulo.com.androidtest03.ui.onboarding.welcome.WelcomeFragment

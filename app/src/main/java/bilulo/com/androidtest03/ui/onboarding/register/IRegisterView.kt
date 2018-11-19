@@ -12,6 +12,7 @@ interface IRegisterView {
         fun getAddressNumber() : Long
         fun getNeighborhood() : String
         fun getBirthDate(): String
+        fun callbackSuccess()
         fun callbackSaveError(msg: String)
     }
 
@@ -22,6 +23,10 @@ interface IRegisterView {
     }
 
     class EmptyView : View {
+        override fun callbackSuccess() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
         override fun getName(): String {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }

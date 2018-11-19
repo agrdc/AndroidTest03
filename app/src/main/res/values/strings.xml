@@ -18,5 +18,10 @@
     <string name="et_cpf_error">CPF fora do padrão (xxx.xxx.xxx-xx).</string>
     <string name="et_cep_error">CEP fora do padrão (xxxxx-xxx).</string>
 
+    <string name="save_error">Erro ao salvar. Tente novamente mais tarde.</string>
+    <string name="list_error">Erro ao listar os usuários. Tente novamente mais tarde.</string>
+    <string name="list_empty">Não existem registros.</string>
+
+
 
 </resources>

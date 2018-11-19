@@ -42,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number|text"
+                android:maxLength="14"
                 android:hint="@string/hint_cpf"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -59,6 +60,7 @@
                 android:id="@+id/cepEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="9"
                 android:inputType="number|text"
                 android:hint="@string/hint_cep"/>
     </android.support.design.widget.TextInputLayout>
@@ -79,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLength="2"
                 android:hint="@string/hint_state"/>
     </android.support.design.widget.TextInputLayout>
 

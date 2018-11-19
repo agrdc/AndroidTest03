@@ -1,8 +1,10 @@
 package bilulo.com.androidtest03.ui.onboarding.register
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import android.widget.Toast
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isEmpty
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCep
@@ -12,7 +14,8 @@ import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment(), IRegisterView.View {
 
-    private var mPresenter : IRegisterView.Presenter = RegisterPresenter()
+    private lateinit var mPresenter: IRegisterView.Presenter
+    private lateinit var mContext : Context
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
@@ -21,6 +24,8 @@ class RegisterFragment : Fragment(), IRegisterView.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        mContext = activity!!
+        mPresenter = RegisterPresenter(mContext)
         setupActionBar()
     }
 
@@ -169,6 +174,10 @@ class RegisterFragment : Fragment(), IRegisterView.View {
     }
 
     override fun callbackSaveError(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(mContext, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun callbackSuccess() {
+        activity?.startActivity(bilulo.com.androidtest03.ui.list.ListActivity.getActivityIntent(mContext))
     }
 }

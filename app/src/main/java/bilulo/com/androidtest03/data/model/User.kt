@@ -1,6 +1,8 @@
 package bilulo.com.androidtest03.data.model
 
-class User {
+import com.orm.SugarRecord
+
+class User : SugarRecord<User> {
     var name: String? = null
     var cpf: String? = null
     var cep: String? = null
