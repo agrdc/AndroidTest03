@@ -12,18 +12,39 @@ interface IRegisterView {
         fun getAddressNumber() : Long
         fun getNeighborhood() : String
         fun getBirthDate(): String
-        fun callbackSuccess()
+        fun showLoading()
+        fun hideLoading()
+        fun callbackLoadSuccess()
+        fun callbackLoadError()
+        fun callbackSaveSuccess()
         fun callbackSaveError(msg: String)
     }
 
     interface Presenter {
         fun setView(view: View)
         fun clearView()
+        fun fetchLocation()
         fun saveUser()
     }
 
     class EmptyView : View {
-        override fun callbackSuccess() {
+        override fun callbackLoadSuccess() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun callbackLoadError() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun callbackSaveSuccess() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun showLoading() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun hideLoading() {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
