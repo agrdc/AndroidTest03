@@ -5,7 +5,6 @@ import bilulo.com.androidtest03.network.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.StringBuilder
 
 class ViaCepService {
 
@@ -18,7 +17,7 @@ class ViaCepService {
                     response.let {
                         when {
                             response.isSuccessful -> listener.onResponseSuccess(response.body())
-                            else -> listener.onResponseError("a")
+                            else -> listener.onResponseError(response.errorBody().toString())
                         }
                     }
                 }

@@ -18,7 +18,7 @@ class ListPresenter(context:Context) : IListView.Presenter {
     }
 
     override fun fetchUsers() {
-        UserDataProvider.removeAllUsers()
+        //UserDataProvider.removeAllUsers()
         val users = UserDataProvider.listAllUsers()
         if (users == null) {
             mView.callbackError(mContext.getString(R.string.list_error))

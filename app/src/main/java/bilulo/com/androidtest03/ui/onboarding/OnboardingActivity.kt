@@ -45,6 +45,10 @@ class OnboardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
-        initFragment(this, FragmentType.FRAGMENT_WELCOME)
+        var fragmentType : FragmentType? = intent.getSerializableExtra(TYPE_FRAGMENT_TAG) as FragmentType?
+        if (fragmentType == null) {
+            fragmentType = FragmentType.FRAGMENT_WELCOME
+        }
+        initFragment(this, fragmentType )
     }
 }

@@ -3,11 +3,19 @@ package bilulo.com.androidtest03.ui.list
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
+import android.view.View
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.data.model.User
+import bilulo.com.androidtest03.ui.onboarding.FragmentType
+import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity
+import kotlinx.android.synthetic.main.activity_list.*
 
 class ListActivity : AppCompatActivity(), IListView.View {
+
     private lateinit var mPresenter: IListView.Presenter
 
     companion object {
@@ -20,13 +28,37 @@ class ListActivity : AppCompatActivity(), IListView.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+        showLoading()
+        setupActionbar()
+    }
+
+    private fun setupActionbar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.title_list)
+    }
+
+    override fun onBackPressed() {
+        startActivity(OnboardingActivity.getActivityIntent(this, FragmentType.FRAGMENT_REGISTER))
+        finish()
+        super.onBackPressed()
     }
 
     override fun onStart() {
+        super.onStart()
         mPresenter = ListPresenter(this)
         mPresenter.setView(this)
         mPresenter.fetchUsers()
-        super.onStart()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(OnboardingActivity.getActivityIntent(this, FragmentType.FRAGMENT_REGISTER))
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroy() {
@@ -34,15 +66,40 @@ class ListActivity : AppCompatActivity(), IListView.View {
         super.onDestroy()
     }
 
+    override fun showLoading() {
+        messageTextView.visibility = View.INVISIBLE
+        usersRecyclerView.visibility = View.INVISIBLE
+        loadingList.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loadingList.visibility = View.INVISIBLE
+    }
+
     override fun callbackSuccess(users: List<User>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        hideLoading()
+        usersRecyclerView.visibility = View.VISIBLE
+        usersRecyclerView.layoutManager = LinearLayoutManager(this)
+        val listAdapter = ListAdapter {
+            onItemClicked(it)
+        }
+        listAdapter.setData(users)
+        usersRecyclerView.adapter = listAdapter
     }
 
     override fun callbackEmpty(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        hideLoading()
+        messageTextView.visibility = View.VISIBLE
+        messageTextView.text = msg
     }
 
     override fun callbackError(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        hideLoading()
+        messageTextView.visibility = View.VISIBLE
+        messageTextView.text = msg
+    }
+
+    private fun onItemClicked(it: User) {
+
     }
 }

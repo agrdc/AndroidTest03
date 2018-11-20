@@ -17,7 +17,7 @@ interface IRegisterView {
         fun showLoading()
         fun hideLoading()
         fun callbackLoadSuccess(location : Location)
-        fun callbackLoadError()
+        fun callbackLoadError(msg: String)
         fun callbackSaveSuccess()
         fun callbackSaveError(msg: String)
     }
@@ -78,7 +78,7 @@ interface IRegisterView {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
-        override fun callbackLoadError() {
+        override fun callbackLoadError(msg: String) {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 

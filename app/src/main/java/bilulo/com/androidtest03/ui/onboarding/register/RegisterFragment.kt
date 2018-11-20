@@ -13,6 +13,7 @@ import bilulo.com.androidtest03.data.model.Location
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isEmpty
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCep
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCpf
+import bilulo.com.androidtest03.ui.list.ListActivity
 import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -33,18 +34,23 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         super.onActivityCreated(savedInstanceState)
         mActivity = activity!!
         mPresenter = RegisterPresenter(mActivity)
+        initBottomButton()
         initListeners()
         setupActionBar()
     }
 
+    private fun initBottomButton() {
+        bottomButton.text = getString(R.string.bottom_button_register)
+    }
+
     override fun onStart() {
-        mPresenter.setView(this)
         super.onStart()
+        mPresenter.setView(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.register_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.register_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -84,6 +90,11 @@ class RegisterFragment : Fragment(), IRegisterView.View {
             }
         })
 
+        bottomButton.setOnClickListener {
+            mActivity.startActivity(ListActivity.getActivityIntent(mActivity))
+            (mActivity as OnboardingActivity).finish()
+        }
+
         nameEditText.setOnFocusChangeListener { v, hasFocus -> clearNameError() }
         cpfEditText.setOnFocusChangeListener { v, hasFocus -> clearCpfError() }
         cepEditText.setOnFocusChangeListener { v, hasFocus -> clearCepError() }
@@ -93,12 +104,38 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         numberEditText.setOnFocusChangeListener { v, hasFocus -> clearNumberError() }
         neighborhoodEditText.setOnFocusChangeListener { v, hasFocus -> clearNeighborhoodError() }
         birthDateEditText.setOnFocusChangeListener { v, hasFocus -> clearBirthDateError() }
+    }
 
+    private fun clearBirthDateError() {
+        birthDateInputLayout.isErrorEnabled = false
+    }
 
+    private fun clearNeighborhoodError() {
+        neighborhoodInputLayout.isErrorEnabled = false
+    }
 
+    private fun clearNumberError() {
+        numberInputLayout.isErrorEnabled = false
+    }
 
+    private fun clearComplementError() {
+        complementInputLayout.isErrorEnabled = false
+    }
 
+    private fun clearAddressError() {
+        addressInputLayout.isErrorEnabled = false
+    }
 
+    private fun clearStateError() {
+        stateInputLayout.isErrorEnabled = false
+    }
+
+    private fun clearCepError() {
+        cepInputLayout.isErrorEnabled = false
+    }
+
+    private fun clearCpfError() {
+        cpfInputLayout.isErrorEnabled = false
     }
 
     private fun clearNameError() {
@@ -196,16 +233,6 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         neighborhoodEditText.setText(location.neighborhood)
     }
 
-   /* public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
-        int childCount = viewGroup.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View view = viewGroup.getChildAt(i);
-            view.setEnabled(enabled);
-            if (view instanceof ViewGroup) {
-                enableDisableViewGroup((ViewGroup) view, enabled);
-            }
-        }*/
-
     override fun getName(): String {
         return nameEditText.text.toString()
     }
@@ -258,7 +285,8 @@ class RegisterFragment : Fragment(), IRegisterView.View {
     }
 
     override fun callbackSaveSuccess() {
-        activity?.startActivity(bilulo.com.androidtest03.ui.list.ListActivity.getActivityIntent(mActivity))
+        activity?.startActivity(ListActivity.getActivityIntent(mActivity))
+        (mActivity as OnboardingActivity).finish()
     }
 
     override fun callbackLoadSuccess(location: Location) {
@@ -266,8 +294,9 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         populateLocation(location)
     }
 
-    override fun callbackLoadError() {
+    override fun callbackLoadError(msg: String) {
         hideLoading()
+        Toast.makeText(mActivity, msg,Toast.LENGTH_LONG).show()
     }
 
 

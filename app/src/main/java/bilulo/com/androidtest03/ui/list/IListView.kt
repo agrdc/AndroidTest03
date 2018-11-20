@@ -4,6 +4,8 @@ import bilulo.com.androidtest03.data.model.User
 
 interface IListView {
     interface View {
+        fun showLoading()
+        fun hideLoading()
         fun callbackSuccess(users : List<User>)
         fun callbackEmpty(msg: String)
         fun callbackError(msg : String)
@@ -16,6 +18,14 @@ interface IListView {
     }
 
     class EmptyView : View {
+        override fun hideLoading() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun showLoading() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
         override fun callbackError(msg: String) {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }

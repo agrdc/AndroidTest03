@@ -37,14 +37,14 @@ class RegisterPresenter(context: Context) : IRegisterView.Presenter {
             ViaCepService.getLocationByCep(formatCep(mView.getCep()), object : IViaCepResponse<Location?> {
                 override fun onResponseSuccess(response: Location?) {
                     var location = response
-                    if (location != null)
+                    if (location != null && !location.erro)
                         mView.callbackLoadSuccess(location)
                     else
-                        mView.callbackLoadError()
+                        mView.callbackLoadError(mContext.getString(R.string.fetch_cep_error))
                 }
 
                 override fun onResponseError(msg : String) {
-                    mView.callbackLoadError()
+                    mView.callbackLoadError(mContext.getString(R.string.fetch_cep_error))
                 }
             })
         }

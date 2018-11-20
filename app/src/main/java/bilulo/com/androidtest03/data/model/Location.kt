@@ -21,4 +21,6 @@ class Location {
     var ibge: String? = ""
     @SerializedName("gia")
     var gia: String? = ""
+    @SerializedName("erro")
+    var erro: Boolean = false
 }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AndroidTest03</string>
     <string name="title_register">Registrar</string>
+    <string name="title_list">Lista</string>
+    <string name="title_edit">Editar</string>
     <string name="tv_welcome">Bem Vindo</string>
     <string name="btn_begin_register">Iniciar Cadastro</string>
 
@@ -14,14 +16,17 @@
     <string name="hint_neighborhood">Bairro</string>
     <string name="hint_birth_date">Data de nascimento</string>
 
+    <string name="list_cpf">CPF</string>
+    <string name="list_address">Endereço</string>
+
     <string name="et_generic_empty_error">Por favor preencha este campo.</string>
     <string name="et_cpf_error">CPF fora do padrão (xxx.xxx.xxx-xx).</string>
     <string name="et_cep_error">CEP fora do padrão (xxxxx-xxx).</string>
 
-    <string name="save_error">Erro ao salvar. Tente novamente mais tarde.</string>
-    <string name="list_error">Erro ao listar os usuários. Tente novamente mais tarde.</string>
+    <string name="save_error">Erro ao salvar.</string>
+    <string name="fetch_cep_error">Erro ao carregar as informações do CEP. Por favor cheque sua conexão ou preencha os campos manualmente.</string>
+    <string name="list_error">Erro ao listar os usuários.</string>
     <string name="list_empty">Não existem registros.</string>
 
-
-
+    <string name="bottom_button_register">Ver a lista de usuarios</string>
 </resources>
