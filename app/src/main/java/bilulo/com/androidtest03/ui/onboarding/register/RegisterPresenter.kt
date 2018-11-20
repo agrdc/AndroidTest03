@@ -11,10 +11,10 @@ import bilulo.com.androidtest03.network.service.ViaCepService
 import java.lang.StringBuilder
 
 
-class RegisterPresenter(context: Context) : IRegisterView.Presenter {
+class RegisterPresenter : IRegisterView.Presenter {
 
     var mView: IRegisterView.View = IRegisterView.EmptyView()
-    private val mContext = context
+    private lateinit var mContext : Context
 
     override fun setView(view: IRegisterView.View) {
         mView = view
@@ -48,6 +48,10 @@ class RegisterPresenter(context: Context) : IRegisterView.Presenter {
                 }
             })
         }
+    }
+
+    fun setContext(context: Context) {
+        mContext = context
     }
 
     private fun formatCep(cep: String): String {

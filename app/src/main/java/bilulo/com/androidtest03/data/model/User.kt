@@ -1,8 +1,9 @@
 package bilulo.com.androidtest03.data.model
 
 import com.orm.SugarRecord
+import java.io.Serializable
 
-class User : SugarRecord<User> {
+class User : SugarRecord<User>, Serializable {
     var name: String? = null
     var cpf: String? = null
     var cep: String? = null
@@ -21,7 +22,7 @@ class User : SugarRecord<User> {
         cep: String?,
         state: String?,
         address: String?,
-        complement : String?,
+        complement: String?,
         addressNumber: Long?,
         neighborhood: String?,
         birthDate: String?

@@ -24,9 +24,12 @@
     <string name="et_cep_error">CEP fora do padrão (xxxxx-xxx).</string>
 
     <string name="save_error">Erro ao salvar.</string>
+    <string name="edit_success">Usuário editado com sucesso.</string>
+
     <string name="fetch_cep_error">Erro ao carregar as informações do CEP. Por favor cheque sua conexão ou preencha os campos manualmente.</string>
     <string name="list_error">Erro ao listar os usuários.</string>
     <string name="list_empty">Não existem registros.</string>
 
     <string name="bottom_button_register">Ver a lista de usuarios</string>
+    <string name="bottom_button_edit">Ver o endereço no mapa</string>
 </resources>

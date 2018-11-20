@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.data.model.User
+import bilulo.com.androidtest03.ui.edit.EditActivity
 import bilulo.com.androidtest03.ui.onboarding.FragmentType
 import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity
 import kotlinx.android.synthetic.main.activity_list.*
@@ -100,6 +101,8 @@ class ListActivity : AppCompatActivity(), IListView.View {
     }
 
     private fun onItemClicked(it: User) {
-
+        var backupId = it.id
+        startActivity(EditActivity.getActivityIntent(this,it, backupId))
+        finish()
     }
 }
