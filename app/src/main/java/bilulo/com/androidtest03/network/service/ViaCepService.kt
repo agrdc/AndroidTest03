@@ -18,13 +18,12 @@ class ViaCepService {
                     response.let {
                         when {
                             response.isSuccessful -> listener.onResponseSuccess(response.body())
-                            response.code() == 404 -> listener.onResponseErrorNotFound()
-                            else -> listener.onResponseError()
+                            else -> listener.onResponseError("a")
                         }
                     }
                 }
                 override fun onFailure(call: Call<Location>?, t: Throwable?) {
-                    listener.onResponseError()
+                    listener.onResponseError(t?.message.toString())
                 }
             })
         }

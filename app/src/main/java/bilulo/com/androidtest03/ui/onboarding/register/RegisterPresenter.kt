@@ -13,7 +13,7 @@ import java.lang.StringBuilder
 
 class RegisterPresenter(context: Context) : IRegisterView.Presenter {
 
-    var mView : IRegisterView.View = IRegisterView.EmptyView()
+    var mView: IRegisterView.View = IRegisterView.EmptyView()
     private val mContext = context
 
     override fun setView(view: IRegisterView.View) {
@@ -25,7 +25,7 @@ class RegisterPresenter(context: Context) : IRegisterView.Presenter {
     }
 
     override fun saveUser() {
-        if(UserDataProvider.saveUser(buildUserObject())) {
+        if (UserDataProvider.saveUser(buildUserObject())) {
             mView.callbackSaveSuccess()
         } else {
             mView.callbackSaveError(mContext.getString(R.string.save_error))
@@ -37,14 +37,13 @@ class RegisterPresenter(context: Context) : IRegisterView.Presenter {
             ViaCepService.getLocationByCep(formatCep(mView.getCep()), object : IViaCepResponse<Location?> {
                 override fun onResponseSuccess(response: Location?) {
                     var location = response
-                    mView.callbackLoadSuccess()
+                    if (location != null)
+                        mView.callbackLoadSuccess(location)
+                    else
+                        mView.callbackLoadError()
                 }
 
-                override fun onResponseError() {
-                    mView.callbackLoadError()
-                }
-
-                override fun onResponseErrorNotFound() {
+                override fun onResponseError(msg : String) {
                     mView.callbackLoadError()
                 }
             })
@@ -57,7 +56,7 @@ class RegisterPresenter(context: Context) : IRegisterView.Presenter {
         return stringBuilder.toString()
     }
 
-    private fun buildUserObject() : User {
+    private fun buildUserObject(): User {
         return User(
             mView.getName(), mView.getCpf(),
             mView.getCep(), mView.getState(),

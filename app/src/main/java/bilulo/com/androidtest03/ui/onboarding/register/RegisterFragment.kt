@@ -1,6 +1,5 @@
 package bilulo.com.androidtest03.ui.onboarding.register
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -10,15 +9,14 @@ import android.text.TextWatcher
 import android.view.*
 import android.widget.Toast
 import bilulo.com.androidtest03.R
+import bilulo.com.androidtest03.data.model.Location
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isEmpty
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCep
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCpf
 import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity
-import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment(), IRegisterView.View {
-
 
     private val VALUE_WAIT_TIME_MILLIS : Long = 1000
     private lateinit var mPresenter: IRegisterView.Presenter
@@ -84,8 +82,27 @@ class RegisterFragment : Fragment(), IRegisterView.View {
                     mHandler.postDelayed(runnable, VALUE_WAIT_TIME_MILLIS)
                 }
             }
-
         })
+
+        nameEditText.setOnFocusChangeListener { v, hasFocus -> clearNameError() }
+        cpfEditText.setOnFocusChangeListener { v, hasFocus -> clearCpfError() }
+        cepEditText.setOnFocusChangeListener { v, hasFocus -> clearCepError() }
+        stateEditText.setOnFocusChangeListener { v, hasFocus -> clearStateError() }
+        addressEditText.setOnFocusChangeListener { v, hasFocus -> clearAddressError() }
+        complementEditText.setOnFocusChangeListener { v, hasFocus -> clearComplementError() }
+        numberEditText.setOnFocusChangeListener { v, hasFocus -> clearNumberError() }
+        neighborhoodEditText.setOnFocusChangeListener { v, hasFocus -> clearNeighborhoodError() }
+        birthDateEditText.setOnFocusChangeListener { v, hasFocus -> clearBirthDateError() }
+
+
+
+
+
+
+    }
+
+    private fun clearNameError() {
+        nameInputLayout.isErrorEnabled = false
     }
 
     private fun setupActionBar() {
@@ -172,6 +189,23 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         }
     }
 
+    private fun populateLocation(location: Location) {
+        addressEditText.setText(location.address)
+        stateEditText.setText(location.state)
+        complementEditText.setText(location.complement)
+        neighborhoodEditText.setText(location.neighborhood)
+    }
+
+   /* public static void enableDisableViewGroup(ViewGroup viewGroup, boolean enabled) {
+        int childCount = viewGroup.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View view = viewGroup.getChildAt(i);
+            view.setEnabled(enabled);
+            if (view instanceof ViewGroup) {
+                enableDisableViewGroup((ViewGroup) view, enabled);
+            }
+        }*/
+
     override fun getName(): String {
         return nameEditText.text.toString()
     }
@@ -209,7 +243,6 @@ class RegisterFragment : Fragment(), IRegisterView.View {
     }
 
     override fun showLoading() {
-
         (mActivity as OnboardingActivity).window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         loadingRegister.visibility = View.VISIBLE
@@ -228,8 +261,9 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         activity?.startActivity(bilulo.com.androidtest03.ui.list.ListActivity.getActivityIntent(mActivity))
     }
 
-    override fun callbackLoadSuccess() {
+    override fun callbackLoadSuccess(location: Location) {
         hideLoading()
+        populateLocation(location)
     }
 
     override fun callbackLoadError() {

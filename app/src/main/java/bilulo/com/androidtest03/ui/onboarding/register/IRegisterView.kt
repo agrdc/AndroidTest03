@@ -1,5 +1,7 @@
 package bilulo.com.androidtest03.ui.onboarding.register
 
+import bilulo.com.androidtest03.data.model.Location
+
 interface IRegisterView {
 
     interface View {
@@ -14,7 +16,7 @@ interface IRegisterView {
         fun getBirthDate(): String
         fun showLoading()
         fun hideLoading()
-        fun callbackLoadSuccess()
+        fun callbackLoadSuccess(location : Location)
         fun callbackLoadError()
         fun callbackSaveSuccess()
         fun callbackSaveError(msg: String)
@@ -28,26 +30,6 @@ interface IRegisterView {
     }
 
     class EmptyView : View {
-        override fun callbackLoadSuccess() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
-        override fun callbackLoadError() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
-        override fun callbackSaveSuccess() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
-        override fun showLoading() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
-        override fun hideLoading() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
-
         override fun getName(): String {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
@@ -84,9 +66,30 @@ interface IRegisterView {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
+        override fun showLoading() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun hideLoading() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun callbackLoadSuccess(location: Location) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun callbackLoadError() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun callbackSaveSuccess() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
         override fun callbackSaveError(msg: String) {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
+
 
     }
 }
