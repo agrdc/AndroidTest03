@@ -24,48 +24,48 @@ interface IEditView {
 
     class EmptyView : View {
         override fun getName(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getCpf(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getCep(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getState(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getAddress(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getComplement(): String? {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return null
         }
 
         override fun getAddressNumber(): Long {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return 0
         }
 
         override fun getNeighborhood(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
         override fun getBirthDate(): String {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return ""
         }
 
 
         override fun callbackSaveSuccess(msg: String) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
         }
 
         override fun callbackSaveError(msg: String) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
         }
 
     }

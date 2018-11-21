@@ -55,6 +55,11 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onStart() {
+        super.onStart()
+        mPresenter.setView(this)
+    }
+
     override fun onDestroyView() {
         mPresenter.clearView()
         super.onDestroyView()

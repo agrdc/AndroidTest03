@@ -19,23 +19,18 @@ interface IListView {
 
     class EmptyView : View {
         override fun hideLoading() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun showLoading() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun callbackError(msg: String) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun callbackEmpty(string: String) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun callbackSuccess(users: List<User>) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
     }
 }
