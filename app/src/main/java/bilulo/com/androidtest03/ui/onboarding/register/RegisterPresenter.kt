@@ -8,7 +8,6 @@ import bilulo.com.androidtest03.data.provider.UserDataProvider
 import bilulo.com.androidtest03.helper.ConnectionHelper
 import bilulo.com.androidtest03.network.service.IViaCepResponse
 import bilulo.com.androidtest03.network.service.ViaCepService
-import java.lang.StringBuilder
 
 
 class RegisterPresenter : IRegisterView.Presenter {

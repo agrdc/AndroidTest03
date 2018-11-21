@@ -1,6 +1,5 @@
 package bilulo.com.androidtest03.ui.edit
 
-import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
