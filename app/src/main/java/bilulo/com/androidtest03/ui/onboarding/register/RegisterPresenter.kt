@@ -13,7 +13,7 @@ import bilulo.com.androidtest03.network.service.ViaCepService
 class RegisterPresenter : IRegisterView.Presenter {
 
     var mView: IRegisterView.View = IRegisterView.EmptyView()
-    private lateinit var mContext : Context
+    private lateinit var mContext: Context
 
     override fun setView(view: IRegisterView.View) {
         mView = view
@@ -42,7 +42,7 @@ class RegisterPresenter : IRegisterView.Presenter {
                         mView.callbackLoadError(mContext.getString(R.string.fetch_cep_error))
                 }
 
-                override fun onResponseError(msg : String) {
+                override fun onResponseError(msg: String) {
                     mView.callbackLoadError(mContext.getString(R.string.fetch_cep_error))
                 }
             })
@@ -60,11 +60,24 @@ class RegisterPresenter : IRegisterView.Presenter {
     }
 
     private fun buildUserObject(): User {
-        return User(
-            mView.getName(), mView.getCpf(),
-            mView.getCep(), mView.getState(),
-            mView.getAddress(), mView.getComplement(),
-            mView.getAddressNumber(), mView.getNeighborhood(), mView.getBirthDate()
-        )
+        var addressNumberString = mView.getAddressNumber()
+        return if (addressNumberString.isBlank())
+            User(
+                mView.getName(), mView.getCpf(),
+                mView.getCep(), mView.getState(),
+                mView.getAddress(), mView.getComplement(),
+                null, mView.getNeighborhood(), mView.getBirthDate()
+            )
+        else
+            User(
+                mView.getName(), mView.getCpf(),
+                mView.getCep(), mView.getState(),
+                mView.getAddress(), mView.getComplement(),
+                mView.getAddressNumber().toLong(), mView.getNeighborhood(), mView.getBirthDate()
+            )
+    }
+
+    override fun getUser(): User {
+        return buildUserObject()
     }
 }

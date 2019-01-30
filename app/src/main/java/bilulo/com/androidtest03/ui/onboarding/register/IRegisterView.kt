@@ -1,6 +1,7 @@
 package bilulo.com.androidtest03.ui.onboarding.register
 
 import bilulo.com.androidtest03.data.model.Location
+import bilulo.com.androidtest03.data.model.User
 
 interface IRegisterView {
 
@@ -11,15 +12,15 @@ interface IRegisterView {
         fun getState(): String
         fun getAddress() : String
         fun getComplement() : String?
-        fun getAddressNumber() : Long
+        fun getAddressNumber() : String
         fun getNeighborhood() : String
         fun getBirthDate(): String
-        fun showLoading()
-        fun hideLoading()
         fun callbackLoadSuccess(location : Location)
         fun callbackLoadError(msg: String)
         fun callbackSaveSuccess()
         fun callbackSaveError(msg: String)
+        fun showLoading()
+        fun hideLoading()
     }
 
     interface Presenter {
@@ -27,6 +28,7 @@ interface IRegisterView {
         fun clearView()
         fun fetchLocation()
         fun saveUser()
+        fun getUser() : User
     }
 
     class EmptyView : View {
@@ -54,8 +56,8 @@ interface IRegisterView {
             return ""
         }
 
-        override fun getAddressNumber(): Long {
-            return 0
+        override fun getAddressNumber(): String {
+            return ""
         }
 
         override fun getNeighborhood(): String {

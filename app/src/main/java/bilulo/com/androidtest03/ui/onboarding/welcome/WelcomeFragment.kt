@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.ui.onboarding.FragmentType
 import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity
+import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity.Companion.REGISTER_FRAGMENT_TAG
 import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity.Companion.initFragment
+import bilulo.com.androidtest03.ui.onboarding.OnboardingActivity.Companion.mFragment
+import bilulo.com.androidtest03.ui.onboarding.register.RegisterFragment
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
 class WelcomeFragment : Fragment() {
@@ -29,7 +32,8 @@ class WelcomeFragment : Fragment() {
 
     private fun initListeners() {
         buttonRegister.setOnClickListener {
-            initFragment(activity as OnboardingActivity, FragmentType.FRAGMENT_REGISTER)
+            mFragment = RegisterFragment()
+            initFragment(activity as OnboardingActivity, mFragment)
         }
     }
 }

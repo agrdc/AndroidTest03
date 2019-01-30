@@ -10,6 +10,7 @@ import android.view.*
 import android.widget.Toast
 import bilulo.com.androidtest03.R
 import bilulo.com.androidtest03.data.model.Location
+import bilulo.com.androidtest03.data.model.User
 import bilulo.com.androidtest03.helper.DateInputMask
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isEmpty
 import bilulo.com.androidtest03.helper.ValidationHelper.Companion.isValidCep
@@ -20,11 +21,12 @@ import kotlinx.android.synthetic.main.fragment_form.*
 
 class RegisterFragment : Fragment(), IRegisterView.View {
 
-    private val VALUE_WAIT_TIME_MILLIS : Long = 1000
+    private val VALUE_WAIT_TIME_MILLIS: Long = 1000
     private lateinit var mPresenter: IRegisterView.Presenter
-    private lateinit var mActivity : Context
+    private lateinit var mActivity: Context
     private val mHandler = Handler()
-    private var runnable : Runnable? = null
+    private var mUser: User? = null
+    private var runnable: Runnable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
@@ -271,8 +273,8 @@ class RegisterFragment : Fragment(), IRegisterView.View {
         return complementEditText.text.toString()
     }
 
-    override fun getAddressNumber(): Long {
-        return numberEditText.text.toString().toLong()
+    override fun getAddressNumber(): String {
+        return numberEditText.text.toString()
     }
 
     override fun getNeighborhood(): String {
@@ -284,8 +286,10 @@ class RegisterFragment : Fragment(), IRegisterView.View {
     }
 
     override fun showLoading() {
-        (mActivity as OnboardingActivity).window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        (mActivity as OnboardingActivity).window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
         loadingRegister.visibility = View.VISIBLE
     }
 
@@ -299,7 +303,7 @@ class RegisterFragment : Fragment(), IRegisterView.View {
     }
 
     override fun callbackSaveSuccess() {
-        activity?.startActivity(ListActivity.getActivityIntent(mActivity))
+        mActivity.startActivity(ListActivity.getActivityIntent(mActivity))
         (mActivity as OnboardingActivity).finish()
     }
 
@@ -310,8 +314,7 @@ class RegisterFragment : Fragment(), IRegisterView.View {
 
     override fun callbackLoadError(msg: String) {
         hideLoading()
-        Toast.makeText(mActivity, msg,Toast.LENGTH_LONG).show()
+        Toast.makeText(mActivity, msg, Toast.LENGTH_LONG).show()
     }
-
 
 }
